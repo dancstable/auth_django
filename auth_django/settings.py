@@ -9,9 +9,6 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, "auth_django", "templates")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "auth0-auth_django-k0n4a#6cqu9=co$_bu^^sd@&^8#*%ukg3z4ku!lj&j)%^@cx8%"
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -102,6 +99,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ENV_FILE = find_dotenv()
 if ENV_FILE:
     load_dotenv(ENV_FILE)
+
+SECRET_KEY = os.environ.get("APP_SECRET_KEY")
 
 AUTH0_DOMAIN = os.environ.get("AUTH0_DOMAIN")
 AUTH0_CLIENT_ID = os.environ.get("AUTH0_CLIENT_ID")
